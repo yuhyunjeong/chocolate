@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melting Chocolate Heart</title>
+    <style>
+      /* Basic page styling */
+      body {
+        background-color: #f9c0e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Container for the heart and drips */
+      .heart-container {
+        position: relative;
+        width: 200px;
+        height: 180px;
+      }
+
+      /* Create a heart shape using CSS */
+      .heart {
+        position: relative;
+        width: 100px;
+        height: 105px;
+        background: radial-gradient(circle at 50% 30%, #7a4a2a, #5e3219 80%);
+
+        /* Gradient for chocolate look */
+
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+          inset 10px -3px 5px rgba(0, 0, 0, 0.3);
+
+        transform: rotate(-80deg);
+        margin: 0 auto;
+
+        /* text */
+        color: white;
+      }
+
+      /* Two circles for the top curves of the heart */
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: inherit; /* Inherit gradient for smooth blending */
+        border-radius: 50%;
+      }
+      .heart::before {
+        content: "CHOCOLATE CHOCOLATE CHOCOLATE CHOCOLATE";
+        color: white;
+
+        top: -50px;
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Light shadow to soften edges */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        z-index: 1;
+        overflow: hidden;
+      }
+      .heart::after {
+        content: "CHOCOLATE CHOCOLATE CHOCOLATE OLATE CHO";
+        color: white;
+
+        top: 5px;
+        left: 45px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Light shadow to soften edges */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      /* Drip styling for the falling effect */
+      .drip {
+        position: absolute;
+        width: 15px;
+        height: 20px;
+        background: #6b3e26;
+        border-radius: 70%;
+        top: 0; /* Start at the top */
+        opacity: 0;
+
+        /* Triangle-like shape at the top */
+        border-bottom-left-radius: 80%;
+        border-bottom-right-radius: 80%;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        animation: fall 3s ease-in-out forwards;
+      }
+
+      /* 🎀 Emoji styling */
+      .ribbon {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px; /* Adjust size of the emoji */
+        line-height: 1;
+        z-index: 10;
+      }
+
+      /* Keyframes for the falling drip animation */
+      @keyframes fall {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120px); /* Fall 120px downward */
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heart-container">
+      <div class="heart" id="heart">
+        CHOCOLATE CHOCOLATE CHOCOLATE CHOCOLATE CHOCO
+      </div>
+      <div class="ribbon">🎀</div>
+      <div class="message"></div>
+    </div>
+
+    <script>
+      // Function to create a new drip element
+      function createDrip() {
+        const heart = document.getElementById("heart");
+        const drip = document.createElement("div");
+        drip.classList.add("drip");
+
+        // Randomize the horizontal position relative to the container (range from 25% to 75%)
+        const randomXPercent = 50 + (Math.random() - 0.5) * 50; // random value between 25% and 75%
+        drip.style.left = randomXPercent + "%";
+
+        // Append the drip to the heart's container
+        const container = heart.parentElement;
+        container.appendChild(drip);
+
+        // Remove the drip after its animation is complete (3 seconds)
+        setTimeout(() => {
+          drip.remove();
+        }, 3000);
+      }
+
+      // Create a new drip every 500ms to simulate continuous melting
+      setInterval(createDrip, 500);
+    </script>
+  </body>
+</html>
