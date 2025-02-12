@@ -32,8 +32,8 @@
 
         /* Gradient for chocolate look */
 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
-          inset 10px -3px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+          inset 10px -3px 5px rgba(0, 0, 0, 0.8);
 
         transform: rotate(-80deg);
         margin: 0 auto;
@@ -87,17 +87,17 @@
       .drip {
         position: absolute;
         width: 15px;
-        height: 20px;
+        height: 40px;
         background: #6b3e26;
-        border-radius: 70%;
+
         top: 0; /* Start at the top */
         opacity: 0;
 
         /* Triangle-like shape at the top */
-        border-bottom-left-radius: 80%;
-        border-bottom-right-radius: 80%;
+        border-bottom-left-radius: 90%;
+        border-bottom-right-radius: 90%;
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        animation: fall 3s ease-in-out forwards;
+        animation: fall 1s ease-in-out forwards;
       }
 
       /* 🎀 Emoji styling */
@@ -106,7 +106,7 @@
         top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 80px; /* Adjust size of the emoji */
+        font-size: 100px; /* Adjust size of the emoji */
         line-height: 1;
         z-index: 10;
       }
@@ -121,7 +121,7 @@
           opacity: 1;
         }
         100% {
-          transform: translateY(120px); /* Fall 120px downward */
+          transform: translateY(150px); /* Fall 150px downward */
           opacity: 0;
         }
       }
@@ -133,7 +133,6 @@
         CHOCOLATE CHOCOLATE CHOCOLATE CHOCOLATE CHOCO
       </div>
       <div class="ribbon">🎀</div>
-      <div class="message"></div>
     </div>
 
     <script>
@@ -143,22 +142,22 @@
         const drip = document.createElement("div");
         drip.classList.add("drip");
 
-        // Randomize the horizontal position relative to the container (range from 25% to 75%)
-        const randomXPercent = 50 + (Math.random() - 0.5) * 50; // random value between 25% and 75%
+        // Randomize the horizontal position relative to the container (range from 65% to 75%)
+        const randomXPercent = 70 + (Math.random() - 0.5) * 10; // random value between 65% and 75%
         drip.style.left = randomXPercent + "%";
 
         // Append the drip to the heart's container
         const container = heart.parentElement;
         container.appendChild(drip);
 
-        // Remove the drip after its animation is complete (3 seconds)
+        // Remove the drip after its animation is complete (5 seconds)
         setTimeout(() => {
           drip.remove();
-        }, 3000);
+        }, 5000);
       }
 
-      // Create a new drip every 500ms to simulate continuous melting
-      setInterval(createDrip, 500);
+      // Create a new drip every 10ms to simulate continuous melting
+      setInterval(createDrip, 10);
     </script>
   </body>
 </html>
