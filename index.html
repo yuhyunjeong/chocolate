@@ -7,7 +7,7 @@
     <style>
       /* Basic page styling */
       body {
-        background-color: #f9c0e1;
+        background-color: #fbc4df;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -97,7 +97,7 @@
         border-bottom-left-radius: 90%;
         border-bottom-right-radius: 90%;
         clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        animation: fall 1s ease-in-out forwards;
+        animation: fall 5s ease-in-out forwards;
       }
 
       /* 🎀 Emoji styling */
@@ -156,8 +156,8 @@
         }, 5000);
       }
 
-      // Create a new drip every 10ms to simulate continuous melting
-      setInterval(createDrip, 10);
+      // Create a new drip every 1000ms to simulate continuous melting
+      setInterval(createDrip, 1000);
     </script>
   </body>
 </html>
