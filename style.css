@@ -1,0 +1,120 @@
+/* Basic page styling */
+body {
+  background-color: #ffe0e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Container for the heart and drips */
+.heart-container {
+  position: relative;
+  width: 200px;
+  height: 180px;
+}
+
+/* Create a heart shape using CSS */
+.heart {
+  position: relative;
+  width: 100px;
+  height: 105px;
+  background: radial-gradient(circle at 50% 30%, #7a4a2a, #5e3219 80%);
+
+  /* Gradient for chocolate look */
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 10px -3px 5px rgba(0, 0, 0, 0.8);
+
+  transform: rotate(-80deg);
+  margin: 0 auto;
+
+  /* text */
+  color: white;
+}
+
+/* Two circles for the top curves of the heart */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: inherit; /* Inherit gradient for smooth blending */
+  border-radius: 50%;
+}
+.heart::before {
+  content: "CHOCOLATE CHOCOLATE CHOCOLATE CHOCOLATE";
+  color: white;
+
+  top: -50px;
+  left: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Light shadow to soften edges */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+  overflow: hidden;
+}
+.heart::after {
+  content: "CHOCOLATE CHOCOLATE CHOCOLATE OLATE CHO";
+  color: white;
+
+  top: 5px;
+  left: 45px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Light shadow to soften edges */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Drip styling for the falling effect */
+.drip {
+  position: absolute;
+  width: 15px;
+  height: 40px;
+  background: #6b3e26;
+
+  top: 0; /* Start at the top */
+  opacity: 0;
+
+  /* Triangle-like shape at the top */
+  border-bottom-left-radius: 90%;
+  border-bottom-right-radius: 90%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: fall 5s ease-in-out forwards;
+}
+
+/* 🎀 Emoji styling */
+.ribbon {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px; /* Adjust size of the emoji */
+  line-height: 1;
+  z-index: 10;
+}
+
+/* Keyframes for the falling drip animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(150px); /* Fall 150px downward */
+    opacity: 0;
+  }
+}
